@@ -1,6 +1,6 @@
 import { getPostById, getPosts } from '@/services/api';
 import PostDetail from '@/components/PostDetail';
-import { RootPageLayout } from '@/app/layout';
+import { RootPageLayout } from '@/components/RootPageLayout';
 
 export const metadata = async ({ params }: { params: {id: string }}) => {
     console.log(params)
