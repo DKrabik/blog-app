@@ -12,51 +12,36 @@ export default function RootLayout({ children}: { children: React.ReactNode}) {
   return (
     <html lang="en">
             <body>
-              {!isPostPage && (
-                <header>
-                    <nav>
-                        <Link href="/posts">Home</Link> | <Link href="/posts/create">Create Post</Link>
-                    </nav>
-                </header>
-              )}
-              {isPostPage && pathname.endsWith('create') && (
+              {!isPostPage && pathname.endsWith('create') && (
                 <header>
                     <nav>
                         <Link href="/posts">Home</Link>
                     </nav>
                 </header>
+              )}
+
+              {pathname.endsWith('edit') && (
+                <header>
+                    <nav>
+                        <Link href="/posts">Home</Link> | <Link href="/posts/create">Create Post</Link> | <Link href="/posts">Back</Link>
+                    </nav>
+                </header>
               )} 
 
-              {pathname.endsWith('edit') &&(
+              {!isPostPage &&(
                 <header>
-                <nav>
-                    <Link href="/posts">Home</Link> | <Link href="/posts/create">Create Post</Link> | <Link href={`/posts`}>Back</Link>
-                </nav>
-            </header>
+                  <nav>
+                   <Link href="/posts">Home</Link> | <Link href="/posts/create">Create Post</Link>
+                  </nav>
+                </header>
               )}
-                <main>{children}</main>
+
+              <main>{children}</main>
             </body>
-        </html>
+    </html>
   );
 }
 
-export function RootPageLayout({ children, id }: { children: React.ReactNode, id: string }) {
-  return (
-    <>
-      <header>
-        <nav>
-            <Link href="/posts">Home</Link> |
-            <Link href="/posts/create">Create Post</Link> |
-            {id && (
-              <>
-                <Link href={`/posts/${id}/edit`}>Edit</Link> | <Link href={`/posts`}>Back</Link>
-              </>
-            )}
-        </nav>
-      </header>
-      <main>{children}</main>
-    </>
-  );
-}
+
 
 
