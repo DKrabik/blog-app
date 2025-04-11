@@ -30,7 +30,7 @@
 ### 1. Клонувати репозиторій
 
 ```bash
-git clone https://github.com/your-username/blog-app.git
+git clone https://github.com/DKrabik/blog-app.git
 cd blog-app
 ```
 
@@ -42,7 +42,7 @@ npm install
 npm run start:dev
 ```
 
-    🔐 Обов’язково додай файл .env або password.json з доступом до MongoDB
+    🔐 Обов’язково додай файл .env з доступом до MongoDB
 
 ### 3. Запустити фронтенд (Next.js)
 
