@@ -45,8 +45,8 @@ export function RootPageLayout({ children, id }: { children: React.ReactNode, id
     <>
       <header>
         <nav>
-            <a href="/posts">Home</a> |
-            <a href="/posts/create">Create Post</a> |
+            <Link href="/posts">Home</Link> |
+            <Link href="/posts/create">Create Post</Link> |
             {id && (
               <>
                 <Link href={`/posts/${id}/edit`}>Edit</Link> | <Link href={`/posts`}>Back</Link>

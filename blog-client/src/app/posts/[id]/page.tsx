@@ -17,8 +17,8 @@ export const metadata = async ({ params }: { params: {id: string }}) => {
             title: `Edit: ${post.title}`,
             description: `Editing post: ${post.title}`,
         };
-    } catch (error) {
-        console.log('Error fetching post in metadata:', error);
+    } catch (err) {
+        console.log('Error fetching post in metadata:', err);
         return {
             title: 'Error',
             description: "An error occurred while fetching the post.",
