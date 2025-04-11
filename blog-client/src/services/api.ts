@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Erica_One } from 'next/font/google';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL|| 'http://localhost:3000/api/posts';
 

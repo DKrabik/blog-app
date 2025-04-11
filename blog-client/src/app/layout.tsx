@@ -1,18 +1,8 @@
 'use client';
 
-import { Inter , Roboto_Mono } from "next/font/google";
 import "../globals.css";
 import { usePathname } from "next/navigation"; 
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const robotoMono = Roboto_Mono({
-  variable: "--font-roboto-mono",
-  subsets: ["latin"],
-});
+import Link from "next/link";
 
 export default function RootLayout({ children}: { children: React.ReactNode}) {
   const pathname = usePathname();
@@ -25,14 +15,14 @@ export default function RootLayout({ children}: { children: React.ReactNode}) {
               {!isPostPage && (
                 <header>
                     <nav>
-                        <a href="/posts">Home</a> | <a href="/posts/create">Create Post</a>
+                        <Link href="/posts">Home</Link> | <Link href="/posts/create">Create Post</Link>
                     </nav>
                 </header>
               )}
               {isPostPage && pathname.endsWith('create') && (
                 <header>
                     <nav>
-                        <a href="/posts">Home</a>
+                        <Link href="/posts">Home</Link>
                     </nav>
                 </header>
               )} 
@@ -40,7 +30,7 @@ export default function RootLayout({ children}: { children: React.ReactNode}) {
               {pathname.endsWith('edit') &&(
                 <header>
                 <nav>
-                    <a href="/posts">Home</a> | <a href="/posts/create">Create Post</a> | <a href={`/posts`}>Back</a>
+                    <Link href="/posts">Home</Link> | <Link href="/posts/create">Create Post</Link> | <Link href={`/posts`}>Back</Link>
                 </nav>
             </header>
               )}
@@ -59,7 +49,7 @@ export function RootPageLayout({ children, id }: { children: React.ReactNode, id
             <a href="/posts/create">Create Post</a> |
             {id && (
               <>
-                <a href={`/posts/${id}/edit`}>Edit</a> | <a href={`/posts`}>Back</a>
+                <Link href={`/posts/${id}/edit`}>Edit</Link> | <Link href={`/posts`}>Back</Link>
               </>
             )}
         </nav>

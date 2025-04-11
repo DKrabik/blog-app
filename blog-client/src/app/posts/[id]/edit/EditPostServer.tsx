@@ -26,6 +26,7 @@ export default async function EditPostServer({params}: { params: { id: string }}
             <div>
                 <h1>Error</h1>
                 <p>Не вдалося завантажити пост.</p>
+                <p>{`Error: ${error}`}</p>
             </div>
         );
     }

@@ -6,8 +6,8 @@ import { updatePost, deletePost } from '@/services/api';
 import PostForm from '@/components/PostForm';
 
 export default function EditPostClient({ post }: { post: { _id: string; title: string; content: string }}){
-    const [title, setTitle] = useState(post.title);
-    const [content, setContent] = useState(post.content);
+    const [title, ] = useState(post.title);
+    const [content, ] = useState(post.content);
     const router = useRouter();
 
     const handleSubmit = async (newTitle: string, newContent: string) => {

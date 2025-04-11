@@ -85,11 +85,11 @@ npm run dev
 ### Сайт буде доступний на http://localhost:3000
 
 🔗 REST API (Nest.js)
-Method	Route	Опис
-GET	/api/posts	Отримати всі пости
-GET	/api/posts/:id	Отримати пост за ID
-POST	/api/posts	Створити новий пост
-PUT	/api/posts/:id	Оновити пост
+Method	Route	        Опис
+GET	    /api/posts	    Отримати всі пости
+GET	    /api/posts/:id	Отримати пост за ID
+POST	/api/posts	    Створити новий пост
+PUT	    /api/posts/:id	Оновити пост
 DELETE	/api/posts/:id	Видалити пост
 
 👤 Автор
