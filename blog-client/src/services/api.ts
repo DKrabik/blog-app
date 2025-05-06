@@ -1,12 +1,7 @@
 import axios from 'axios';
+import { Post } from '@/types/Post'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL|| 'http://localhost:3000/api/posts';
-
-interface Post{
-    _id: string;
-    title: string;
-    content: string;
-}
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/posts';
 
 export const getPosts = async (): Promise<Post[]> => {
     try {
@@ -28,7 +23,7 @@ export const getPostById = async (id: string) => {
     }  
 };
 
-export const createPost = async (title: string, content: string): Promise<Post> => {
+export const createPost = async (title: string, content: string): Promise <Post> => {
     try {
         const response = await axios.post(API_URL, { "title" : title, "content": content });
         return response.data;

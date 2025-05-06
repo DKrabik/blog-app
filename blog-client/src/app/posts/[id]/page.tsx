@@ -1,9 +1,9 @@
 import { getPostById, getPosts } from '@/services/api';
 import PostDetail from '@/components/PostDetail';
 import { RootPageLayout } from '@/components/RootPageLayout';
+import type { Post } from "@/types/Post"
 
-export const metadata = async ({ params }: { params: {id: string }}) => {
-    console.log(params)
+export async function generateMetadata({params} : {params: {id: string}}) {
     if (!params){
         return {
             title: "Post not Found",
@@ -11,32 +11,22 @@ export const metadata = async ({ params }: { params: {id: string }}) => {
         };
     }
 
+    const { id } = await params;
+
     try {
-        const post = await getPostById(params.id);
+        const post: Post = await getPostById(id);
         return {
-            title: `Edit: ${post.title}`,
-            description: `Editing post: ${post.title}`,
+            title: post.title,
+            description: `View article: ${post.title}`,
         };
     } catch (err) {
-        console.log('Error fetching post in metadata:', err);
         return {
-            title: 'Error',
-            description: "An error occurred while fetching the post.",
+            title: 'Post not found',
+            description: "The page does not exist or an error occurred while loading.",
         };
     }
-};
-
-export async function generateStaticParams(){
-    try {
-        const posts = await getPosts();
-        return posts.map((post: any) => ({
-            id: post._id,
-        }))
-    } catch (error) {
-        console.error('Error geterating static params:', error);
-        return [];
-    }
-};
+    
+}
 
 export default async function PostPage({ params }: { params: { id: string } }) {
     const { id } = await params;

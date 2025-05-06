@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState, useRef } from 'react';
+import Swal from 'sweetalert2';
 
 interface ArticleFormProps {
     onSubmit: (title: string, content: string) => void;
@@ -45,6 +46,23 @@ export default function ArticleForm({
         onSubmit(title.trim(), content.trim());
     };
 
+    const handleDeleteClick = async () => {
+        const result = await Swal.fire({
+            title: 'Ви впевнені?',
+            text: 'Цю дію не можна скасувати!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Так, видалити!',
+            cancelButtonText: 'Скасувати',
+        })
+
+        if (result.isConfirmed && onDelete){
+            onDelete();
+        }
+    }
+
     return (<form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {error && <p style={{ color: "red", fontWeight: 500}}>{error}</p>}
 
@@ -79,10 +97,7 @@ export default function ArticleForm({
         {onDelete && (
             <button
                 type="button"
-                onClick={() => {
-                    const confirmDelete = window.confirm("Ви точно хочете видалити пост?");
-                    if (confirmDelete) onDelete();
-                }}
+                onClick={handleDeleteClick}
                 style={{
                     padding: '10px',
                     fontSize: '16px',

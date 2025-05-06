@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePost, deletePost } from '@/services/api';
 import PostForm from '@/components/PostForm';
+import Swal from 'sweetalert2';
 
 export default function EditPostClient({ post }: { post: { _id: string; title: string; content: string }}){
     const [title, ] = useState(post.title);
@@ -22,11 +23,21 @@ export default function EditPostClient({ post }: { post: { _id: string; title: s
     const handleDelete = async () => {
         try {
             await deletePost(post._id);
-            alert('Пост видалено');
-            router.push('/posts')
+                await Swal.fire({
+                    title: 'Видалено!', 
+                    text: 'Ваш пост було видалено.', 
+                    icon: 'success',
+                    confirmButtonText: 'ОК'
+                });
+                router.push('/posts')
         } catch (error) {
             console.error('Помилка видалення', error);
-            alert('Помилка при видаленні');
+            await Swal.fire({
+                title: 'Помилка!', 
+                text: 'Щось пішло не так при видаленні поста.', 
+                icon: 'error',
+                confirmButtonText: 'ОК'
+            });
         }
     };
 

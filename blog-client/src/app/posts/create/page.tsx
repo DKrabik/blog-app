@@ -9,7 +9,7 @@ export default function CreatePostPage(){
 
     const handleSubmit = async (title: string, content: string) => {
         await createPost(title, content);
-        router.push('/');
+        router.push('/posts');
     };
 
     return (

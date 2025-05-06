@@ -1,11 +1,8 @@
 import Link from 'next/link';
+import type { Post } from '@/types/Post';
 
 interface ArticleCardProps {
-    post: {
-        _id: string;
-        title: string;
-        content: string;
-    };
+    post: Post;
 }
 
 export default function ArticleCard({ post }: ArticleCardProps) {
@@ -15,6 +12,11 @@ export default function ArticleCard({ post }: ArticleCardProps) {
                 <Link href={`/posts/${post._id}`}>{post.title}</Link>
             </h3>
             <p>{post.content.substring(0, 100)}...</p>
+            <p>🕒 {new Date(post.createdAt).toLocaleString("uk-UA", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+            })}</p>
         </div>
     );
 }

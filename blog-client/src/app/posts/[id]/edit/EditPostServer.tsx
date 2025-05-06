@@ -2,7 +2,8 @@ import { getPostById } from "@/services/api";
 import EditPostClient from "./EditPostClient";
 
 export default async function EditPostServer({params}: { params: { id: string }}) {
-    const id = params.id;
+    const { id }=  await params;
+    
     if (!id) {
         return (
             <div>
