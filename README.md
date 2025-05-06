@@ -65,7 +65,7 @@ CORS_ORIGIN=http://localhost:3000
 3. Запусти сервер:  
 ```bash
 npm run start:dev
-
+```
 
 ### Сайт буде доступний на http://localhost:3000
 
