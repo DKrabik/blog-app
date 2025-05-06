@@ -86,14 +86,12 @@ npm run start:dev
 
 ```
 PORT=3001
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/blog
-JWT_SECRET=your_jwt_secret_key
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/blog
 CORS_ORIGIN=http://localhost:3000
 ```
 
 - `PORT` — порт, на якому працює сервер.
-- `MONGO_URI` — URI для підключення до MongoDB.
-- `JWT_SECRET` — секретний ключ для генерації JWT токенів.
+- `MONGODB_URI` — URI для підключення до MongoDB.
 - `CORS_ORIGIN` — адреса фронтенду для налаштування CORS.
 
 ### Для фронтенду (Next.js)
